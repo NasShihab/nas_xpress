@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "422254216966",
+    "project_id": "nasxpress-1f5de",
+    "storage_bucket": "nasxpress-1f5de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422254216966:android:e58bfdbccc318900d10087",
+        "android_client_info": {
+          "package_name": "com.example.nas_xpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422254216966-sfjc5e7m0vg7rgsb09s5nnmr4disjg6f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFAbsIGNhxbicIGrFmze5_WDc0476SmPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422254216966-sfjc5e7m0vg7rgsb09s5nnmr4disjg6f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422254216966:android:2e282c8e467aa63ad10087",
+        "android_client_info": {
+          "package_name": "com.nas.nasxpress.nas_xpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422254216966-sfjc5e7m0vg7rgsb09s5nnmr4disjg6f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFAbsIGNhxbicIGrFmze5_WDc0476SmPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422254216966-sfjc5e7m0vg7rgsb09s5nnmr4disjg6f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
