@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
               stream: FirebaseAuth.instance.authStateChanges(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return DashBoard();
+                  return const DashBoard();
                 } else {
                   return const LoginPage();
                 }

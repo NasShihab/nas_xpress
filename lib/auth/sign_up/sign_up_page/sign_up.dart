@@ -45,7 +45,7 @@ class SignupPage extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20.r),
                     child: Image(
-                      image: AssetImage("assets/logo/launcher_icon.png"),
+                      image: const AssetImage("assets/logo/launcher_icon.png"),
                       height: 70.h,
                       width: 70.w,
                     ),
@@ -74,7 +74,7 @@ class SignupPage extends StatelessWidget {
                     onChanged: (value) {},
                     labelText: 'Email',
                     controller: controller.emailController,
-                    prefixIcon: Icon(CupertinoIcons.mail_solid),
+                    prefixIcon: const Icon(CupertinoIcons.mail_solid),
                   ),
                   height15(),
                   FormFieldWidget(
@@ -82,7 +82,7 @@ class SignupPage extends StatelessWidget {
                     labelText: 'Password',
                     obscureText: true,
                     controller: controller.passwordController,
-                    prefixIcon: Icon(CupertinoIcons.shield_lefthalf_fill),
+                    prefixIcon: const Icon(CupertinoIcons.shield_lefthalf_fill),
                   ),
                   height15(),
                   Obx(() {
