@@ -9,7 +9,7 @@ import 'package:nas_xpress/core/widget_reusable.dart';
 import '../../cart/cart_page.dart';
 import '../../navigation_drawer/navigation_drawer_view.dart';
 import '../products/controller/get_product_controller.dart';
-import '../products/all_products.dart';
+import '../all_products_view/all_products.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
