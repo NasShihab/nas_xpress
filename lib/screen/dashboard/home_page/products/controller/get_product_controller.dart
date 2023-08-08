@@ -20,9 +20,18 @@ class GetProductsController extends GetxController {
       yield null;
     }
   }
-// this will matching the collections
-  Stream<QuerySnapshot> selectedCollections() => FirebaseFirestore.instance
+
+  Stream<List<Product>> maleCollectionsProduct() => FirebaseFirestore.instance
       .collection('product_list')
-      .where('category', isEqualTo: 'categoryName')
-      .snapshots();
+      .where('category', isEqualTo: 'Male Collections')
+      .snapshots()
+      .map((snapshot) =>
+      snapshot.docs.map((doc) => Product.fromJson(doc.data())).toList());
+
+  Stream<List<Product>> femaleCollectionsProduct() => FirebaseFirestore.instance
+      .collection('product_list')
+      .where('category', isEqualTo: 'Female Collections')
+      .snapshots()
+      .map((snapshot) =>
+      snapshot.docs.map((doc) => Product.fromJson(doc.data())).toList());
 }

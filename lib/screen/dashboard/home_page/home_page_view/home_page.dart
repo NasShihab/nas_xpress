@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,16 +7,17 @@ import 'package:nas_xpress/screen/dashboard/home_page/poster_view/poster_view.da
 import 'package:nas_xpress/screen/dashboard/home_page/products/all_products_view/all_products_view.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
-
-import '../cart/cart_page.dart';
-import '../navigation_drawer/navigation_drawer_view.dart';
-import 'products/products_widget/all_products_widget.dart';
+import '../../cart/cart_page.dart';
+import '../../navigation_drawer/navigation_drawer_view.dart';
+import '../products/controller/get_product_controller.dart';
+import '../products/products_widget/all_products_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(GetProductsController());
     return Scaffold(
       drawer: MyNavigationDrawer(),
       appBar: AppBar(
@@ -61,18 +61,33 @@ class HomePage extends StatelessWidget {
               children: [
                 PosterView().getSliderImages(),
                 height5(),
+
+                //All Products
                 titleRow(
-                    itemCategoryTitle: 'All Products',
-                    pageName: const AllProductsView()),
-                AllProducts().fetchAllProducts(),
+                  itemCategoryTitle: 'All Products',
+                  pageName: const AllProductsView(),
+                ),
+                AllProducts(
+                  function: controller.readAllProduct(),
+                ),
+
+                // Female Collections
                 titleRow(
-                    itemCategoryTitle: 'Female Collections',
-                    pageName: const AllProductsView()),
-                AllProducts().selectedCollections('Female Collections'),
+                  itemCategoryTitle: 'Female Collections',
+                  pageName: const AllProductsView(),
+                ),
+                AllProducts(
+                  function: controller.femaleCollectionsProduct(),
+                ),
+
+                // Male Collections
                 titleRow(
-                    itemCategoryTitle: 'Male Collections',
-                    pageName: const AllProductsView()),
-                AllProducts().selectedCollections('Male Collections'),
+                  itemCategoryTitle: 'Male Collections',
+                  pageName: const AllProductsView(),
+                ),
+                AllProducts(
+                  function: controller.maleCollectionsProduct(),
+                ),
               ],
             ),
           ),

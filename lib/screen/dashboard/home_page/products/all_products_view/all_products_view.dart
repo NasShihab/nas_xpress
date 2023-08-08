@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nas_xpress/screen/dashboard/home_page/products/products_widget/all_products_widget.dart';
 import '../controller/get_product_controller.dart';
 import '../../../../../model/product_model.dart';
+import '../products_widget/product_card_widget/product_card_widget.dart';
 
 class AllProductsView extends StatelessWidget {
   const AllProductsView({super.key});
@@ -40,14 +40,14 @@ class AllProductsView extends StatelessWidget {
                     itemCount: product.length,
                     itemBuilder: (context, index) => ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
-                      child: AllProducts().productViewBox(
-                        product[index].id,
-                        product[index].image,
-                        product[index].title,
-                        product[index].description,
-                        product[index].price,
-                        product[index].ratings,
-                        product[index].category,
+                      child: ProductCardWidget(
+                        id: product[index].id,
+                        image: product[index].image,
+                        title: product[index].title,
+                        description: product[index].description,
+                        price: product[index].price,
+                        ratings: product[index].ratings,
+                        category: product[index].category,
                       ),
                     ),
                   ),
