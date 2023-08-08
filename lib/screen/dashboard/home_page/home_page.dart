@@ -5,13 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/screen/dashboard/home_page/poster_view/poster_view.dart';
-import 'package:nas_xpress/dashboard/home_page/all_products/all_products_view/all_products_view.dart';
+import 'package:nas_xpress/screen/dashboard/home_page/products/all_products_view/all_products_view.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
 
 import '../cart/cart_page.dart';
 import '../navigation_drawer/navigation_drawer_view.dart';
-import '../../../dashboard/home_page/all_products/all_products.dart';
+import 'products/products_widget/all_products_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

@@ -137,7 +137,7 @@ class LoginPage extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        'Sign In',
+                        'Sign Up',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,

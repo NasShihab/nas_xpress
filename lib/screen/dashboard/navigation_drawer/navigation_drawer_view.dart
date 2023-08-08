@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile_picture_controller.dart';
 import 'package:nas_xpress/screen/dashboard/navigation_drawer/latest_collections/latest_collections_page.dart';
-import 'package:nas_xpress/dashboard/home_page/all_products/all_products_view/all_products_view.dart';
+import 'package:nas_xpress/screen/dashboard/home_page/products/all_products_view/all_products_view.dart';
 import '../../admin_panel/admin_page.dart';
 import '../../../auth/login/controller/login_page.dart';
 import '../user_profile/user_profile_view.dart';
