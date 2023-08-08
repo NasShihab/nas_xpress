@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/admin_panel/admin_page_controller.dart';
-import 'package:nas_xpress/dashboard/dashboard_page/dashboard_page.dart';
-import 'package:nas_xpress/widget_reusable/my_colors.dart';
-import 'package:nas_xpress/widget_reusable/widget_reusable.dart';
+import 'package:nas_xpress/screen/dashboard/dashboard_page.dart';
+import 'package:nas_xpress/core/my_colors.dart';
+import 'package:nas_xpress/core/widget_reusable.dart';
 import '../auth_widget/auth_widget.dart';
 
 class AdminPage extends StatelessWidget {

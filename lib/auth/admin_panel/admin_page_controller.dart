@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nas_xpress/widget_reusable/my_colors.dart';
+import 'package:nas_xpress/core/my_colors.dart';
 
 class AdminPageController extends GetxController {
   TextEditingController titleController = TextEditingController();

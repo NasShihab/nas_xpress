@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../auth/login/login.dart';
-import '../dashboard/dashboard_page/dashboard_page.dart';
+import '../../auth/login/login.dart';
+import '../dashboard/dashboard_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

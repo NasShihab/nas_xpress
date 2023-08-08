@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/user_profile_page/user_profile_view.dart';
-import 'package:nas_xpress/dashboard/cart_page/cart_page.dart';
-import 'package:nas_xpress/widget_reusable/my_colors.dart';
-import '../../favorite_products/favorite_products.dart';
-import '../../home_page/home_page.dart';
+import 'package:nas_xpress/screen/dashboard/cart/cart_page.dart';
+import 'package:nas_xpress/core/my_colors.dart';
+import '../favorite_products/favorite_products.dart';
+import '../home_page/home_page.dart';
 import 'bottom_navigation_controller.dart';
 
 class BottomNavigationBarPage extends StatelessWidget {

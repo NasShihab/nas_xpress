@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nas_xpress/singleton_data/user_data/user_info_singleton.dart';
 
-import '../../../dashboard/dashboard_page/dashboard_page.dart';
+import '../../../screen/dashboard/dashboard_page.dart';
 
 class UserDataController extends GetxController {
   List<String> gender = ['Male', 'Female', 'Other'];

@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/login/login.dart';
 import 'package:nas_xpress/auth/sign_up/sign_up_controller.dart';
-import 'package:nas_xpress/widget_reusable/my_colors.dart';
-import 'package:nas_xpress/widget_reusable/widget_reusable.dart';
+import 'package:nas_xpress/core/my_colors.dart';
+import 'package:nas_xpress/core/widget_reusable.dart';
 import '../auth_widget/auth_widget.dart';
 
 class SignupPage extends StatelessWidget {

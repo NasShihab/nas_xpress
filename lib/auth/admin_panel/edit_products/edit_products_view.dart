@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/admin_panel/admin_page_controller.dart';
 import 'package:nas_xpress/auth/admin_panel/edit_products/edit_products_controller.dart';
-import '../../../widget_reusable/widget_reusable.dart';
+import '../../../core/widget_reusable.dart';
 import '../../auth_widget/auth_widget.dart';
 
 class EditProducts extends StatelessWidget {

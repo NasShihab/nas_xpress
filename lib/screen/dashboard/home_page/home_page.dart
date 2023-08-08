@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/dashboard/home_page/page_view_builder/page_view.dart';
+import 'package:nas_xpress/screen/dashboard/home_page/poster_view/poster_view.dart';
 import 'package:nas_xpress/dashboard/home_page/all_products/all_products_view/all_products_view.dart';
-import 'package:nas_xpress/widget_reusable/my_colors.dart';
-import 'package:nas_xpress/widget_reusable/widget_reusable.dart';
+import 'package:nas_xpress/core/my_colors.dart';
+import 'package:nas_xpress/core/widget_reusable.dart';
 
-import '../cart_page/cart_page.dart';
+import '../cart/cart_page.dart';
 import '../navigation_drawer/navigation_drawer_page/navigation_drawer_view.dart';
-import 'all_products/all_products.dart';
+import '../../../dashboard/home_page/all_products/all_products.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                PageViewBuilder().getSliderImages(),
+                PosterView().getSliderImages(),
                 height5(),
                 titleRow(
                     itemCategoryTitle: 'All Products',

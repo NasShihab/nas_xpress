@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/dashboard/cart_page/cart_page_controller.dart';
-import 'package:nas_xpress/widget_reusable/widget_reusable.dart';
+import 'package:nas_xpress/screen/dashboard/cart/cart_page_controller.dart';
+import 'package:nas_xpress/core/widget_reusable.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
