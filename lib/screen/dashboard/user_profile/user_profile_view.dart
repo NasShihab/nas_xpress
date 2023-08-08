@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/sign_up/user_form_data/controller/user_data_controller.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/read_user_controller.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile_picture_controller.dart';
-
 import 'package:nas_xpress/core/my_colors.dart';
 
 import '../../../core/widget_reusable.dart';
@@ -19,7 +18,7 @@ class UserProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ReadUserController());
-    final fetching = Get.put(UserProfileController());
+    final fetching = Get.put(UserPictureController());
 
     return Scaffold(
       appBar: AppBar(
@@ -31,23 +30,23 @@ class UserProfileView extends StatelessWidget {
           stream: controller.readUserData2(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              final userData = snapshot.data!;
+              final userdata = snapshot.data!;
 
               TextEditingController nameController =
-                  TextEditingController(text: userData.name);
+                  TextEditingController(text: userdata.name);
               TextEditingController emailController = TextEditingController(
                   text: FirebaseAuth.instance.currentUser!.email);
-              TextEditingController addressController =
-                  TextEditingController(text: userData.address1);
+              TextEditingController address1Controller =
+                  TextEditingController(text: userdata.address1);
               TextEditingController cityController =
-                  TextEditingController(text: userData.city);
+                  TextEditingController(text: userdata.city);
 
               TextEditingController phoneController =
-                  TextEditingController(text: userData.phone);
+                  TextEditingController(text: userdata.phone);
               TextEditingController ageController =
-                  TextEditingController(text: userData.age);
+                  TextEditingController(text: userdata.age);
               TextEditingController genderController =
-                  TextEditingController(text: userData.gender);
+                  TextEditingController(text: userdata.gender);
 
               return Obx(() {
                 return ListView(
@@ -58,7 +57,7 @@ class UserProfileView extends StatelessWidget {
                       children: [
                         Center(
                             child: fetching.image.value.path == ''
-                                ? Get.put(UserProfileController())
+                                ? Get.put(UserPictureController())
                                     .fetchProfilePicture()
                                 : SizedBox(
                                     height: 100.h,
@@ -105,7 +104,7 @@ class UserProfileView extends StatelessWidget {
                       children: [
                         Expanded(
                           child: textFormField(
-                            controller: addressController,
+                            controller: address1Controller,
                             labelText: 'Address',
                             readonly: controller.readonly.value,
                             prefixIcon:
@@ -208,7 +207,14 @@ class UserProfileView extends StatelessWidget {
                       visible: controller.saveButton.value,
                       child: ElevatedButton(
                         onPressed: () {
-                          controller.updateData();
+                          controller.updateData(
+                            name: nameController.text.trim(),
+                            phone: phoneController.text.trim(),
+                            address1: address1Controller.text.trim(),
+                            city: cityController.text.trim(),
+                            age: ageController.text.trim(),
+                            gender: genderController.text.trim(),
+                          );
                           fetching.overwriteImageWithGalleryImage();
                         },
                         style: ButtonStyle(

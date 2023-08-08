@@ -4,18 +4,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/auth/login/controller/login_page.dart';
-import 'package:nas_xpress/auth/sign_up/sign_up_page/controller/sign_up_controller.dart';
 import 'package:nas_xpress/core/my_colors.dart';
-import 'package:nas_xpress/core/widget_reusable.dart';
+import '../../../core/widget_reusable.dart';
 import '../../auth_widget/auth_widget.dart';
+import '../../sign_up/sign_up_page/sign_up.dart';
+import '../login_controller.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignUpController());
+    final controller = Get.put(LoginController());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -55,7 +55,7 @@ class SignupPage extends StatelessWidget {
                   right: 15.w,
                   bottom: 15.h,
                   child: Text(
-                    'Sign Up',
+                    'Login',
                     style: GoogleFonts.secularOne(
                       color: Colors.white,
                       fontSize: 30.sp,
@@ -88,21 +88,7 @@ class SignupPage extends StatelessWidget {
                   Obx(() {
                     return ElevatedButton(
                       onPressed: () {
-                        controller.signUp();
-                        // if (FirebaseAuth.instance.currentUser!.email != null) {
-                          // FirebaseFirestore.instance
-                          //     .collection('user_data')
-                          //     .doc(FirebaseAuth.instance.currentUser!.email)
-                          //     .set({
-                          //   "name": '',
-                          //   "age": '',
-                          //   "gender": '',
-                          //   "phone": '',
-                          //   "address1": '',
-                          //   "city": '',
-                          //   "role": 'user',
-                          // }).then((value) => Get.to(const DashBoard()));
-                        // }
+                        controller.signIn();
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: myOrange,
@@ -119,7 +105,7 @@ class SignupPage extends StatelessWidget {
                                 ),
                               )
                             : Text(
-                                'SignUp',
+                                'Login',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -146,7 +132,7 @@ class SignupPage extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
+                            builder: (context) => const SignupPage(),
                           ),
                         );
                       },

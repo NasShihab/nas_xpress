@@ -7,8 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nas_xpress/singleton_data/user_data/user_info_singleton.dart';
-
 import '../../../../screen/dashboard/dashboard_page.dart';
 
 class UserDataController extends GetxController {
@@ -39,17 +37,14 @@ class UserDataController extends GetxController {
       CollectionReference collectionRef =
           FirebaseFirestore.instance.collection('user_data');
 
-      UserInfoSingleton().name = nameController.text.trim();
-      UserInfoSingleton().age = ageController.text.trim();
-      UserInfoSingleton().gender = genderController.text.trim();
-      UserInfoSingleton().phone = phoneController.text.trim();
-      UserInfoSingleton().address1 = addressLine1Controller.text.trim();
-      UserInfoSingleton().city = cityNameController.text.trim();
+      String name = nameController.text.trim();
+      String age = ageController.text.trim();
+      String gender = genderController.text.trim();
+      String phone = phoneController.text.trim();
+      String address1 = addressLine1Controller.text.trim();
+      String city = cityNameController.text.trim();
 
-      if (UserInfoSingleton().name!.isEmpty ||
-          UserInfoSingleton().age!.isEmpty ||
-          UserInfoSingleton().gender!.isEmpty ||
-          UserInfoSingleton().phone!.isEmpty) {
+      if (name.isEmpty || age.isEmpty || gender.isEmpty || phone.isEmpty) {
         Get.snackbar(
           'Error',
           'Please fill in all the fields',
@@ -66,12 +61,12 @@ class UserDataController extends GetxController {
       return collectionRef
           .doc(FirebaseAuth.instance.currentUser!.email)
           .update({
-        "name": UserInfoSingleton().name,
-        "age": UserInfoSingleton().age,
-        "gender": UserInfoSingleton().gender,
-        "phone": UserInfoSingleton().phone,
-        "address1": UserInfoSingleton().address1,
-        "city": UserInfoSingleton().city,
+        "name": name,
+        "age": age,
+        "gender": gender,
+        "phone": phone,
+        "address1": address1,
+        "city": city,
       }).then((value) => Get.to(const DashBoard()));
     } catch (error) {
       isLoading.value = false;

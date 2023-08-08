@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/my_colors.dart';
 
-class UserProfileController extends GetxController {
+class UserPictureController extends GetxController {
   fetchProfilePicture() {
     return StreamBuilder(
       stream: FirebaseStorage.instance

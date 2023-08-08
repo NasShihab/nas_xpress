@@ -8,7 +8,7 @@ import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile
 import 'package:nas_xpress/screen/dashboard/navigation_drawer/latest_collections/latest_collections_page.dart';
 import 'package:nas_xpress/dashboard/home_page/all_products/all_products_view/all_products_view.dart';
 import '../../admin_panel/admin_page.dart';
-import '../../../auth/login/controller/login.dart';
+import '../../../auth/login/controller/login_page.dart';
 import '../user_profile/user_profile_view.dart';
 import '../../../core/routes/my_routes.dart';
 import '../../../core/my_colors.dart';
@@ -17,7 +17,7 @@ import '../../../core/widget_reusable.dart';
 class MyNavigationDrawer extends StatelessWidget {
   MyNavigationDrawer({super.key});
 
-  final getController = Get.put(UserProfileController());
+  final getController = Get.put(UserPictureController());
 
   @override
   Widget build(BuildContext context) {
