@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nas_xpress/screen/dashboard/home_page/poster_view/poster_view_controller.dart';
+import 'package:nas_xpress/screen/dashboard/home_page/poster_view/controller/poster_view_controller.dart';
 
 import '../../../../core/my_colors.dart';
 

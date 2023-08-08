@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/auth/sign_up/user_data/user_data_controller.dart';
-import 'package:nas_xpress/auth/user_profile_page/user_profile_controller/read_user_controller.dart';
-import 'package:nas_xpress/auth/user_profile_page/user_profile_controller/user_profile_picture_controller.dart';
+import 'package:nas_xpress/auth/sign_up/user_form_data/controller/user_data_controller.dart';
+import 'package:nas_xpress/screen/dashboard/user_profile/controller/read_user_controller.dart';
+import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile_picture_controller.dart';
 import 'package:nas_xpress/singleton_data/user_data/user_info_singleton.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 
-import '../../core/widget_reusable.dart';
+import '../../../core/widget_reusable.dart';
 
 class UserProfileView extends StatelessWidget {
   const UserProfileView({super.key});

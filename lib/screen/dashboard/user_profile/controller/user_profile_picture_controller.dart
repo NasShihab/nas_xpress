@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../core/my_colors.dart';
+import '../../../../core/my_colors.dart';
 
 class UserProfileController extends GetxController {
   fetchProfilePicture() {

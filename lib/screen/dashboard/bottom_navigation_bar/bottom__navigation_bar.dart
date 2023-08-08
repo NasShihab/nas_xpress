@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/auth/user_profile_page/user_profile_view.dart';
+import 'package:nas_xpress/screen/dashboard/user_profile/user_profile_view.dart';
 import 'package:nas_xpress/screen/dashboard/cart/cart_page.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import '../favorite_products/favorite_products.dart';
 import '../home_page/home_page.dart';
-import 'bottom_navigation_controller.dart';
+import 'controller/bottom_navigation_controller.dart';
 
 class BottomNavigationBarPage extends StatelessWidget {
   const BottomNavigationBarPage({super.key});

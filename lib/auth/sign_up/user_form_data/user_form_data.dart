@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/auth/sign_up/user_data/user_data_controller.dart';
+import 'package:nas_xpress/auth/sign_up/user_form_data/controller/user_data_controller.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
 

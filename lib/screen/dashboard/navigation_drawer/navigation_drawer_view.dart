@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/auth/user_profile_page/user_profile_controller/user_profile_picture_controller.dart';
+import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile_picture_controller.dart';
 import 'package:nas_xpress/screen/dashboard/navigation_drawer/latest_collections/latest_collections_page.dart';
 import 'package:nas_xpress/dashboard/home_page/all_products/all_products_view/all_products_view.dart';
-import '../../../../auth/admin_panel/admin_page.dart';
-import '../../../../auth/login/login.dart';
-import '../../../../auth/user_profile_page/user_profile_view.dart';
-import '../../../../core/routes/my_routes.dart';
-import '../../../../core/my_colors.dart';
-import '../../../../core/widget_reusable.dart';
+import '../../admin_panel/admin_page.dart';
+import '../../../auth/login/controller/login.dart';
+import '../user_profile/user_profile_view.dart';
+import '../../../core/routes/my_routes.dart';
+import '../../../core/my_colors.dart';
+import '../../../core/widget_reusable.dart';
 
 class MyNavigationDrawer extends StatelessWidget {
   MyNavigationDrawer({super.key});

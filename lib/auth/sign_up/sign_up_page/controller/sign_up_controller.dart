@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:nas_xpress/auth/sign_up/user_data/user_form_data.dart';
+import 'package:nas_xpress/auth/sign_up/user_form_data/user_form_data.dart';
 
 class SignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();

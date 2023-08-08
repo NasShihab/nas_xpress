@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/auth/login/login.dart';
-import 'package:nas_xpress/auth/sign_up/sign_up_controller.dart';
+import 'package:nas_xpress/auth/login/controller/login.dart';
+import 'package:nas_xpress/auth/sign_up/sign_up_page/controller/sign_up_controller.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
-import '../auth_widget/auth_widget.dart';
+import '../../auth_widget/auth_widget.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});

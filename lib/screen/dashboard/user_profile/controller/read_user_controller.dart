@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:nas_xpress/model/user_info_model.dart';
 
-import '../../../singleton_data/user_data/user_info_singleton.dart';
+import '../../../../singleton_data/user_data/user_info_singleton.dart';
 
 class ReadUserController extends GetxController {
   Stream readUserData() => FirebaseFirestore.instance

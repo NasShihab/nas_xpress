@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/auth/admin_panel/admin_page_controller.dart';
-import 'package:nas_xpress/auth/admin_panel/edit_products/edit_products_controller.dart';
-import 'package:nas_xpress/auth/admin_panel/edit_products/edit_products_view.dart';
-import 'package:nas_xpress/screen/dashboard/cart/cart_page_controller.dart';
+import 'package:nas_xpress/screen/admin_panel/controller/admin_page_controller.dart';
+import 'package:nas_xpress/screen/admin_panel/edit_products/controller/edit_products_controller.dart';
+import 'package:nas_xpress/screen/admin_panel/edit_products/edit_products_view.dart';
+import 'package:nas_xpress/screen/dashboard/cart/controller/cart_page_controller.dart';
 import 'package:nas_xpress/model/product_model.dart';
 import 'package:nas_xpress/dashboard/home_page/all_products/product_view.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../../../screen/dashboard/favorite_products/favorite_product_controller.dart';
+import '../../../screen/dashboard/favorite_products/controller/favorite_product_controller.dart';
 import 'get_product_controller.dart';
 
 class AllProducts extends StatelessWidget {

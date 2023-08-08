@@ -10,7 +10,7 @@ import 'package:nas_xpress/core/my_colors.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
 
 import '../cart/cart_page.dart';
-import '../navigation_drawer/navigation_drawer_page/navigation_drawer_view.dart';
+import '../navigation_drawer/navigation_drawer_view.dart';
 import '../../../dashboard/home_page/all_products/all_products.dart';
 
 class HomePage extends StatelessWidget {
