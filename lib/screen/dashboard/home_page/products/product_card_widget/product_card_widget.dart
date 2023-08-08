@@ -7,13 +7,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../core/my_colors.dart';
-import '../../../../../../core/widget_reusable.dart';
-import '../../../../../admin_panel/controller/admin_page_controller.dart';
-import '../../../../../admin_panel/edit_products/edit_products_view.dart';
-import '../../../../cart/controller/cart_page_controller.dart';
-import '../../../../favorite_products/controller/favorite_product_controller.dart';
-import '../../products_details_view/product_details_view.dart';
+import '../../../../../core/my_colors.dart';
+import '../../../../../core/widget_reusable.dart';
+import '../../../../admin_panel/controller/admin_page_controller.dart';
+import '../../../../admin_panel/edit_products/edit_products_view.dart';
+import '../../../cart/controller/cart_page_controller.dart';
+import '../../../favorite_products/controller/favorite_product_controller.dart';
+import '../products_details_view/product_details_view.dart';
 
 class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget({

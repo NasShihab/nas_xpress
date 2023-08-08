@@ -4,13 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/screen/dashboard/home_page/poster_view/poster_view.dart';
-import 'package:nas_xpress/screen/dashboard/home_page/products/all_products_view/all_products_view.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
 import '../../cart/cart_page.dart';
 import '../../navigation_drawer/navigation_drawer_view.dart';
 import '../products/controller/get_product_controller.dart';
-import '../products/products_widget/all_products_widget.dart';
+import '../products/all_products.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -65,7 +64,9 @@ class HomePage extends StatelessWidget {
                 //All Products
                 titleRow(
                   itemCategoryTitle: 'All Products',
-                  pageName: const AllProductsView(),
+                  pageName: AllProducts(
+                    function: controller.readAllProduct(),
+                  ),
                 ),
                 AllProducts(
                   function: controller.readAllProduct(),
@@ -74,7 +75,9 @@ class HomePage extends StatelessWidget {
                 // Female Collections
                 titleRow(
                   itemCategoryTitle: 'Female Collections',
-                  pageName: const AllProductsView(),
+                  pageName: AllProducts(
+                    function: controller.femaleCollectionsProduct(),
+                  ),
                 ),
                 AllProducts(
                   function: controller.femaleCollectionsProduct(),
@@ -83,7 +86,8 @@ class HomePage extends StatelessWidget {
                 // Male Collections
                 titleRow(
                   itemCategoryTitle: 'Male Collections',
-                  pageName: const AllProductsView(),
+                  pageName: AllProducts(
+                      function: controller.maleCollectionsProduct()),
                 ),
                 AllProducts(
                   function: controller.maleCollectionsProduct(),

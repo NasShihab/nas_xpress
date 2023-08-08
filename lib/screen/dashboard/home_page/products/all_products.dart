@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nas_xpress/model/product_model.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
-import 'package:nas_xpress/screen/dashboard/home_page/products/products_widget/product_card_widget/product_card_widget.dart';
-import '../controller/get_product_controller.dart';
+import 'package:nas_xpress/screen/dashboard/home_page/products/product_card_widget/product_card_widget.dart';
+import 'controller/get_product_controller.dart';
 
 class AllProducts extends StatelessWidget {
   AllProducts({super.key, required this.function});
