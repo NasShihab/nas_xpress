@@ -1,19 +1,19 @@
 import 'dart:convert';
 
-Products productsFromJson(String str) => Products.fromJson(json.decode(str));
+UserInfoModel productsFromJson(String str) => UserInfoModel.fromJson(json.decode(str));
 
-String productsToJson(Products data) => json.encode(data.toJson());
+String productsToJson(UserInfoModel data) => json.encode(data.toJson());
 
-class Products {
+class UserInfoModel {
   String? name;
-  int? age;
+  String? age;
   String? city;
   String? gender;
-  int? phone;
+  String? phone;
   String? address1;
   String? role;
 
-  Products({
+  UserInfoModel({
     this.name,
     this.age,
     this.city,
@@ -23,7 +23,7 @@ class Products {
     this.role,
   });
 
-  factory Products.fromJson(Map<String, dynamic> json) => Products(
+  factory UserInfoModel.fromJson(Map<String, dynamic> json) => UserInfoModel(
     name: json["name"],
     age: json["age"],
     city: json["city"],

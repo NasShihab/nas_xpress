@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FormFieldWidget extends StatelessWidget {
@@ -8,6 +9,7 @@ class FormFieldWidget extends StatelessWidget {
   final Function(String) onChanged;
   final bool readOnly;
   final Widget prefixIcon;
+  final TextInputFormatter? textInputFormatter;
 
   const FormFieldWidget({
     super.key,
@@ -17,11 +19,14 @@ class FormFieldWidget extends StatelessWidget {
     required this.onChanged,
     this.readOnly = false,
     this.prefixIcon = const Icon(Icons.account_box_rounded),
+    this.textInputFormatter,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters:
+          textInputFormatter != null ? [textInputFormatter!] : null,
       readOnly: readOnly,
       onChanged: onChanged,
       controller: controller,

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nas_xpress/dashboard/home_page/all_products/all_products.dart';
 import '../get_product_controller.dart';
-import '../product_model.dart';
+import '../../../../model/product_model.dart';
 
 class AllProductsView extends StatelessWidget {
   const AllProductsView({super.key});
@@ -20,7 +20,7 @@ class AllProductsView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
           child: StreamBuilder<List<Product>>(
-            stream: Get.put(GetProductsController()).readAllUser(),
+            stream: Get.put(GetProductsController()).readAllProduct(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Text('Invalid');

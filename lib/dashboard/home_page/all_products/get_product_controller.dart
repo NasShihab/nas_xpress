@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:nas_xpress/dashboard/home_page/all_products/product_model.dart';
+import 'package:nas_xpress/model/product_model.dart';
 
 class GetProductsController extends GetxController {
-  Stream<List<Product>> readAllUser() => FirebaseFirestore.instance
+  Stream<List<Product>> readAllProduct() => FirebaseFirestore.instance
       .collection('product_list')
       .snapshots()
       .map((snapshot) =>

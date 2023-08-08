@@ -199,6 +199,8 @@ class UserDataForm extends StatelessWidget {
                     ),
                     SizedBox(height: 16.h),
                     FormFieldWidget(
+                      textInputFormatter:
+                          FilteringTextInputFormatter.digitsOnly,
                       onChanged: (value) {},
                       labelText: 'Age',
                       controller: userDataController.ageController,

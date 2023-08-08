@@ -9,7 +9,7 @@ import 'package:nas_xpress/auth/admin_panel/admin_page_controller.dart';
 import 'package:nas_xpress/auth/admin_panel/edit_products/edit_products_controller.dart';
 import 'package:nas_xpress/auth/admin_panel/edit_products/edit_products_view.dart';
 import 'package:nas_xpress/dashboard/cart_page/cart_page_controller.dart';
-import 'package:nas_xpress/dashboard/home_page/all_products/product_model.dart';
+import 'package:nas_xpress/model/product_model.dart';
 import 'package:nas_xpress/dashboard/home_page/all_products/product_view.dart';
 import 'package:nas_xpress/widget_reusable/my_colors.dart';
 import 'package:nas_xpress/widget_reusable/widget_reusable.dart';
@@ -38,7 +38,7 @@ class AllProducts extends StatelessWidget {
 // Get All products
   StreamBuilder fetchAllProducts() {
     return StreamBuilder<List<Product>>(
-      stream: controller.readAllUser(),
+      stream: controller.readAllProduct(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Text('Invalid');
