@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/sign_up/user_form_data/controller/user_data_controller.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/read_user_controller.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile_picture_controller.dart';
-import 'package:nas_xpress/singleton_data/user_data/user_info_singleton.dart';
+
 import 'package:nas_xpress/core/my_colors.dart';
 
 import '../../../core/widget_reusable.dart';
@@ -23,94 +21,149 @@ class UserProfileView extends StatelessWidget {
     final controller = Get.put(ReadUserController());
     final fetching = Get.put(UserProfileController());
 
-    TextEditingController nameController =
-        TextEditingController(text: UserInfoSingleton().name);
-    TextEditingController emailController =
-        TextEditingController(text: FirebaseAuth.instance.currentUser!.email);
-    TextEditingController addressController =
-        TextEditingController(text: UserInfoSingleton().address1);
-    TextEditingController cityController =
-        TextEditingController(text: UserInfoSingleton().city);
-
-    TextEditingController phoneController =
-        TextEditingController(text: UserInfoSingleton().phone);
-    TextEditingController ageController =
-        TextEditingController(text: UserInfoSingleton().age);
-    TextEditingController genderController =
-        TextEditingController(text: UserInfoSingleton().gender);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
         automaticallyImplyLeading: false,
       ),
       body: SafeArea(
-        child: Obx(() {
-          return ListView(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
-            children: [
-              height15(),
-              Stack(
-                children: [
-                  Center(
-                      child: fetching.image.value.path == ''
-                          ? Get.put(UserProfileController())
-                              .fetchProfilePicture()
-                          : SizedBox(
-                              height: 100.h,
-                              child: CircleAvatar(
-                                backgroundImage: FileImage(
-                                  File(fetching.image.value.path),
+        child: StreamBuilder(
+          stream: controller.readUserData2(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final userData = snapshot.data!;
+
+              TextEditingController nameController =
+                  TextEditingController(text: userData.name);
+              TextEditingController emailController = TextEditingController(
+                  text: FirebaseAuth.instance.currentUser!.email);
+              TextEditingController addressController =
+                  TextEditingController(text: userData.address1);
+              TextEditingController cityController =
+                  TextEditingController(text: userData.city);
+
+              TextEditingController phoneController =
+                  TextEditingController(text: userData.phone);
+              TextEditingController ageController =
+                  TextEditingController(text: userData.age);
+              TextEditingController genderController =
+                  TextEditingController(text: userData.gender);
+
+              return Obx(() {
+                return ListView(
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+                  children: [
+                    height15(),
+                    Stack(
+                      children: [
+                        Center(
+                            child: fetching.image.value.path == ''
+                                ? Get.put(UserProfileController())
+                                    .fetchProfilePicture()
+                                : SizedBox(
+                                    height: 100.h,
+                                    child: CircleAvatar(
+                                      backgroundImage: FileImage(
+                                        File(fetching.image.value.path),
+                                      ),
+                                      radius: 50.r,
+                                    ),
+                                  )),
+                        Visibility(
+                          visible: controller.saveButton.value,
+                          child: Positioned(
+                              right: 100.w,
+                              bottom: 10.h,
+                              child: GestureDetector(
+                                onTap: () {
+                                  fetching.picImage();
+                                },
+                                child: CircleAvatar(
+                                  backgroundColor: myOrange,
+                                  child: Icon(
+                                    CupertinoIcons.camera,
+                                    size: 20.sp,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                                radius: 50.r,
+                              )),
+                        )
+                      ],
+                    ),
+                    textFormField(
+                      controller: nameController,
+                      labelText: 'Name',
+                      readonly: controller.readonly.value,
+                    ),
+                    textFormField(
+                      controller: emailController,
+                      labelText: 'Email',
+                      readonly: true,
+                      prefixIcon: const Icon(CupertinoIcons.mail),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: textFormField(
+                            controller: addressController,
+                            labelText: 'Address',
+                            readonly: controller.readonly.value,
+                            prefixIcon:
+                                const Icon(CupertinoIcons.map_pin_ellipse),
+                          ),
+                        ),
+                        Expanded(
+                          child: textFormField(
+                            controller: cityController,
+                            labelText: 'City',
+                            readonly: true,
+                            prefixIcon: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: IgnorePointer(
+                                ignoring: controller.readonly.value,
+                                child: PopupMenuButton<String>(
+                                  itemBuilder: (BuildContext context) {
+                                    return Get.put(UserDataController())
+                                        .city
+                                        .map((String value) {
+                                      return PopupMenuItem<String>(
+                                        value: value,
+                                        child: ListTile(
+                                          title: Text(value),
+                                          onTap: () {
+                                            cityController.text = value;
+                                            Navigator.pop(
+                                                context); // Close the popup menu
+                                          },
+                                        ),
+                                      );
+                                    }).toList();
+                                  },
+                                  child: const Icon(CupertinoIcons.map_pin),
+                                  onSelected: (String value) {},
+                                ),
                               ),
-                            )),
-                  Visibility(
-                    visible: controller.saveButton.value,
-                    child: Positioned(
-                        right: 100.w,
-                        bottom: 10.h,
-                        child: GestureDetector(
-                          onTap: () {
-                            fetching.picImage();
-                          },
-                          child: CircleAvatar(
-                            backgroundColor: myOrange,
-                            child: Icon(
-                              CupertinoIcons.camera,
-                              size: 20.sp,
-                              color: Colors.white,
                             ),
                           ),
-                        )),
-                  )
-                ],
-              ),
-              textFormField(
-                controller: nameController,
-                labelText: 'Name',
-                readonly: controller.readonly.value,
-              ),
-              textFormField(
-                controller: emailController,
-                labelText: 'Email',
-                readonly: true,
-                prefixIcon: const Icon(CupertinoIcons.mail),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: textFormField(
-                      controller: addressController,
-                      labelText: 'Address',
-                      readonly: controller.readonly.value,
-                      prefixIcon: const Icon(CupertinoIcons.map_pin_ellipse),
+                        ),
+                      ],
                     ),
-                  ),
-                  Expanded(
-                    child: textFormField(
-                      controller: cityController,
-                      labelText: 'City',
+                    textFormField(
+                      controller: phoneController,
+                      labelText: 'Phone',
+                      readonly: controller.readonly.value,
+                      prefixIcon: const Icon(CupertinoIcons.phone_fill),
+                    ),
+                    textFormField(
+                      keyboardType: TextInputType.number,
+                      controller: ageController,
+                      labelText: 'Age',
+                      readonly: controller.readonly.value,
+                      prefixIcon: const Icon(CupertinoIcons.person_badge_minus),
+                    ),
+                    textFormField(
+                      controller: genderController,
+                      labelText: 'Gender',
                       readonly: true,
                       prefixIcon: FittedBox(
                         fit: BoxFit.scaleDown,
@@ -119,14 +172,14 @@ class UserProfileView extends StatelessWidget {
                           child: PopupMenuButton<String>(
                             itemBuilder: (BuildContext context) {
                               return Get.put(UserDataController())
-                                  .city
+                                  .gender
                                   .map((String value) {
                                 return PopupMenuItem<String>(
                                   value: value,
                                   child: ListTile(
                                     title: Text(value),
                                     onTap: () {
-                                      cityController.text = value;
+                                      genderController.text = value;
                                       Navigator.pop(
                                           context); // Close the popup menu
                                     },
@@ -134,330 +187,65 @@ class UserProfileView extends StatelessWidget {
                                 );
                               }).toList();
                             },
-                            child: const Icon(CupertinoIcons.map_pin),
+                            child: const Icon(Icons.male),
                             onSelected: (String value) {},
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              textFormField(
-                controller: phoneController,
-                labelText: 'Phone',
-                readonly: controller.readonly.value,
-                prefixIcon: const Icon(CupertinoIcons.phone_fill),
-              ),
-              textFormField(
-                keyboardType: TextInputType.number,
-                controller: ageController,
-                labelText: 'Age',
-                readonly: controller.readonly.value,
-                prefixIcon: const Icon(CupertinoIcons.person_badge_minus),
-              ),
-              textFormField(
-                controller: genderController,
-                labelText: 'Gender',
-                readonly: true,
-                prefixIcon: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: IgnorePointer(
-                    ignoring: controller.readonly.value,
-                    child: PopupMenuButton<String>(
-                      itemBuilder: (BuildContext context) {
-                        return Get.put(UserDataController())
-                            .gender
-                            .map((String value) {
-                          return PopupMenuItem<String>(
-                            value: value,
-                            child: ListTile(
-                              title: Text(value),
-                              onTap: () {
-                                genderController.text = value;
-                                Navigator.pop(context); // Close the popup menu
-                              },
-                            ),
-                          );
-                        }).toList();
-                      },
-                      child: const Icon(Icons.male),
-                      onSelected: (String value) {},
+                    height15(),
+                    Visibility(
+                      visible: controller.editButton.value,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          controller.editDataMode();
+                          controller.editButtonVisible();
+                        },
+                        child: const Text('Edit Data'),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              height15(),
-              Visibility(
-                visible: controller.editButton.value,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.editDataMode();
-                    controller.editButtonVisible();
-                  },
-                  child: const Text('Edit Data'),
-                ),
-              ),
-              Visibility(
-                visible: controller.saveButton.value,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.updateData(
-                      // nameController.text.trim(),
-                      // phoneController.text.trim(),
-                      // addressController.text.trim(),
-                      // cityController.text.trim(),
-                      // ageController.text.trim(),
-                      // genderController.text.trim(),
-                    );
-                    fetching.overwriteImageWithGalleryImage();
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.green),
-                  ),
-                  child: controller.isLoading.value
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
-                        )
-                      : Text(
-                          'Save Changes',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.sp),
+                    Visibility(
+                      visible: controller.saveButton.value,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          controller.updateData();
+                          fetching.overwriteImageWithGalleryImage();
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.green),
                         ),
+                        child: controller.isLoading.value
+                            ? const Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Text(
+                                'Save Changes',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.sp),
+                              ),
+                      ),
+                    ),
+                  ],
+                );
+              });
+            } else {
+              return SizedBox(
+                height: 180.h,
+                child: const Center(
+                  child: CircularProgressIndicator(),
                 ),
-              ),
-            ],
-          );
-        }),
+              );
+            }
+          },
+        ),
       ),
     );
   }
-}
-
-Widget a() {
-  final controller = Get.put(ReadUserController());
-  final fetching = Get.put(UserProfileController());
-
-  return StreamBuilder(
-    stream: controller.readUserData(),
-    builder: (context, snapshot) {
-      if (snapshot.hasData) {
-        DocumentSnapshot userData = snapshot.data!;
-
-        TextEditingController nameController =
-            TextEditingController(text: userData["name"]);
-        TextEditingController emailController = TextEditingController(
-            text: FirebaseAuth.instance.currentUser!.email);
-        TextEditingController addressController =
-            TextEditingController(text: userData["address1"]);
-        TextEditingController cityController =
-            TextEditingController(text: userData["city"]);
-
-        TextEditingController phoneController =
-            TextEditingController(text: userData["phone"]);
-        TextEditingController ageController =
-            TextEditingController(text: userData["age"].toString());
-        TextEditingController genderController =
-            TextEditingController(text: userData["gender"]);
-
-        return Obx(() {
-          return ListView(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
-            children: [
-              height15(),
-              Stack(
-                children: [
-                  Center(
-                      child: fetching.image.value.path == ''
-                          ? Get.put(UserProfileController())
-                              .fetchProfilePicture()
-                          : SizedBox(
-                              height: 100.h,
-                              child: CircleAvatar(
-                                backgroundImage: FileImage(
-                                  File(fetching.image.value.path),
-                                ),
-                                radius: 50.r,
-                              ),
-                            )),
-                  Visibility(
-                    visible: controller.saveButton.value,
-                    child: Positioned(
-                        right: 100.w,
-                        bottom: 10.h,
-                        child: GestureDetector(
-                          onTap: () {
-                            fetching.picImage();
-                          },
-                          child: CircleAvatar(
-                            backgroundColor: myOrange,
-                            child: Icon(
-                              CupertinoIcons.camera,
-                              size: 20.sp,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )),
-                  )
-                ],
-              ),
-              textFormField(
-                controller: nameController,
-                labelText: 'Name',
-                readonly: controller.readonly.value,
-              ),
-              textFormField(
-                controller: emailController,
-                labelText: 'Email',
-                readonly: true,
-                prefixIcon: const Icon(CupertinoIcons.mail),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: textFormField(
-                      controller: addressController,
-                      labelText: 'Address',
-                      readonly: controller.readonly.value,
-                      prefixIcon: const Icon(CupertinoIcons.map_pin_ellipse),
-                    ),
-                  ),
-                  Expanded(
-                    child: textFormField(
-                      controller: cityController,
-                      labelText: 'City',
-                      readonly: true,
-                      prefixIcon: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: IgnorePointer(
-                          ignoring: controller.readonly.value,
-                          child: PopupMenuButton<String>(
-                            itemBuilder: (BuildContext context) {
-                              return Get.put(UserDataController())
-                                  .city
-                                  .map((String value) {
-                                return PopupMenuItem<String>(
-                                  value: value,
-                                  child: ListTile(
-                                    title: Text(value),
-                                    onTap: () {
-                                      cityController.text = value;
-                                      Navigator.pop(
-                                          context); // Close the popup menu
-                                    },
-                                  ),
-                                );
-                              }).toList();
-                            },
-                            child: const Icon(CupertinoIcons.map_pin),
-                            onSelected: (String value) {},
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              textFormField(
-                controller: phoneController,
-                labelText: 'Phone',
-                readonly: controller.readonly.value,
-                prefixIcon: const Icon(CupertinoIcons.phone_fill),
-              ),
-              textFormField(
-                keyboardType: TextInputType.number,
-                controller: ageController,
-                labelText: 'Age',
-                readonly: controller.readonly.value,
-                prefixIcon: const Icon(CupertinoIcons.person_badge_minus),
-              ),
-              textFormField(
-                controller: genderController,
-                labelText: 'Gender',
-                readonly: true,
-                prefixIcon: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: IgnorePointer(
-                    ignoring: controller.readonly.value,
-                    child: PopupMenuButton<String>(
-                      itemBuilder: (BuildContext context) {
-                        return Get.put(UserDataController())
-                            .gender
-                            .map((String value) {
-                          return PopupMenuItem<String>(
-                            value: value,
-                            child: ListTile(
-                              title: Text(value),
-                              onTap: () {
-                                genderController.text = value;
-                                Navigator.pop(context); // Close the popup menu
-                              },
-                            ),
-                          );
-                        }).toList();
-                      },
-                      child: const Icon(Icons.male),
-                      onSelected: (String value) {},
-                    ),
-                  ),
-                ),
-              ),
-              height15(),
-              Visibility(
-                visible: controller.editButton.value,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.editDataMode();
-                    controller.editButtonVisible();
-                  },
-                  child: const Text('Edit Data'),
-                ),
-              ),
-              Visibility(
-                visible: controller.saveButton.value,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.updateData(
-                    );
-                    fetching.overwriteImageWithGalleryImage();
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.green),
-                  ),
-                  child: controller.isLoading.value
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
-                        )
-                      : Text(
-                          'Save Changes',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.sp),
-                        ),
-                ),
-              ),
-            ],
-          );
-        });
-      } else {
-        return SizedBox(
-          height: 180.h,
-          child: const Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
-      }
-    },
-  );
 }
 
 TextFormField textFormField({

@@ -6,11 +6,6 @@ import 'package:nas_xpress/model/user_info_model.dart';
 import '../../../../singleton_data/user_data/user_info_singleton.dart';
 
 class ReadUserController extends GetxController {
-  Stream readUserData() => FirebaseFirestore.instance
-      .collection('user_data')
-      .doc(FirebaseAuth.instance.currentUser!.email)
-      .snapshots();
-
   Stream<UserInfoModel?> readUserData2() => FirebaseFirestore.instance
           .collection('user_data')
           .doc(FirebaseAuth.instance.currentUser!.email)
