@@ -50,7 +50,7 @@ class ProductCardWidget extends StatelessWidget {
             fit: StackFit.passthrough,
             children: [
               Ink(
-                width: myWidth(context) * .35,
+                width: myWidth(context) * .40,
                 height: myHeight(context) * .30,
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
@@ -64,7 +64,8 @@ class ProductCardWidget extends StatelessWidget {
                   ],
                 ),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                   width: myWidth(context) * .35,
                   height: myHeight(context) * .30,
                   child: Column(
@@ -74,9 +75,9 @@ class ProductCardWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5.r),
                         child: Image.network(
                           image,
-                          fit: BoxFit.cover,
-                          height: 100.h,
-                          width: myWidth(context) * .35,
+                          fit: BoxFit.contain,
+                          height: myHeight(context) * .18,
+                          width: myWidth(context) * .36,
                         ),
                       ),
                       const Spacer(),

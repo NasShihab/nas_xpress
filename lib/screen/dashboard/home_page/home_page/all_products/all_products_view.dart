@@ -29,16 +29,19 @@ class AllProductsView extends StatelessWidget {
                 width: double.infinity,
                 child: Wrap(
                   direction: Axis.horizontal,
-                  spacing: 10.w,
+                  alignment: WrapAlignment.spaceBetween,
                   children: List.generate(product.length, (index) {
-                    return ProductCardWidget(
-                      id: product[index].id,
-                      image: product[index].image,
-                      title: product[index].title,
-                      description: product[index].description,
-                      price: product[index].price,
-                      ratings: product[index].ratings,
-                      category: product[index].category,
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15.w),
+                      child: ProductCardWidget(
+                        id: product[index].id,
+                        image: product[index].image,
+                        title: product[index].title,
+                        description: product[index].description,
+                        price: product[index].price,
+                        ratings: product[index].ratings,
+                        category: product[index].category,
+                      ),
                     );
                   }),
                 ),
