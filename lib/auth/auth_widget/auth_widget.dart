@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nas_xpress/core/theme/text_theme.dart';
 
 class FormFieldWidget extends StatelessWidget {
   final String labelText;
@@ -24,26 +25,32 @@ class FormFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      inputFormatters:
-          textInputFormatter != null ? [textInputFormatter!] : null,
-      readOnly: readOnly,
-      onChanged: onChanged,
-      controller: controller,
-      obscureText: obscureText,
-      decoration: InputDecoration(
-        prefixIcon: prefixIcon,
-        labelText: labelText,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(50.r),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.orange,
-            width: 2.w,
+    return SizedBox(
+      height: 50.h,
+      child: TextFormField(
+        inputFormatters:
+            textInputFormatter != null ? [textInputFormatter!] : null,
+        readOnly: readOnly,
+        onChanged: onChanged,
+        controller: controller,
+        obscureText: obscureText,
+        decoration: InputDecoration(
+          prefixIcon: prefixIcon,
+          labelText: labelText,
+          labelStyle: bodySmall(context),
+          hintStyle: bodySmall(context),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50.r),
           ),
-          borderRadius: BorderRadius.circular(50.r),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.orange,
+              width: 2.w,
+            ),
+            borderRadius: BorderRadius.circular(50.r),
+          ),
         ),
+        style: bodySmall(context),
       ),
     );
   }

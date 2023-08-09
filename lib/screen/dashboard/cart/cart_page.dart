@@ -8,6 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/screen/dashboard/cart/controller/cart_page_controller.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
 
+import '../../../core/theme/text_theme.dart';
+
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
@@ -16,7 +18,8 @@ class CartPage extends StatelessWidget {
     final cartController = Get.put(CartPageController());
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart Items',
+        title: const Text(
+          'Cart Items',
         ),
         automaticallyImplyLeading: false,
       ),
@@ -66,12 +69,16 @@ class CartPage extends StatelessWidget {
                                 flex: 4,
                                 child: ListTile(
                                   isThreeLine: true,
-                                  title: Text(favorites["title"]),
+                                  title: Text(
+                                    favorites["title"],
+                                    style: bodySmall(context)
+                                        ?.copyWith(fontWeight: FontWeight.bold),
+                                  ),
                                   leading: Image.network(
                                     favorites["image"],
                                     height: double.infinity,
                                     width: 50.w,
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.scaleDown,
                                   ),
                                   subtitle: Column(
                                     crossAxisAlignment:
@@ -79,12 +86,12 @@ class CartPage extends StatelessWidget {
                                     children: [
                                       Text(
                                         favorites["description"],
-                                        style: GoogleFonts.secularOne(
-                                            fontSize: 15.sp),
+                                        style: bodySmall(context),
                                       ),
                                       Text(
                                         favorites["id"],
-                                        style: TextStyle(fontSize: 15.sp),
+                                        style: bodySmall(context)
+                                            ?.copyWith(fontSize: 12.sp),
                                       ),
                                     ],
                                   ),
@@ -112,8 +119,7 @@ class CartPage extends StatelessWidget {
                                         ),
                                         Text(
                                           favorites["quantity"].toString(),
-                                          style: GoogleFonts.secularOne(
-                                              fontSize: 20.sp),
+                                          style: bodyMedium(context),
                                         ),
                                         IconButton(
                                           onPressed: () {
@@ -129,8 +135,8 @@ class CartPage extends StatelessWidget {
                                     ),
                                     Text(
                                       favorites["price"].toString(),
-                                      style: GoogleFonts.secularOne(
-                                          fontSize: 16.sp),
+                                      style: bodySmall(context)?.copyWith(
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),

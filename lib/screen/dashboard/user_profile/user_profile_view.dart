@@ -4,13 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/sign_up/user_form_data/controller/user_data_controller.dart';
+import 'package:nas_xpress/core/theme/text_theme.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/read_user_controller.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile_picture_controller.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import '../../../../core/height_width/height_width_custom.dart';
-
 
 class UserProfileView extends StatelessWidget {
   const UserProfileView({super.key});
@@ -79,9 +78,10 @@ class UserProfileView extends StatelessWidget {
                                 },
                                 child: CircleAvatar(
                                   backgroundColor: myOrange,
+                                  radius: 15.r,
                                   child: Icon(
                                     CupertinoIcons.camera,
-                                    size: 20.sp,
+                                    size: 16.sp,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -90,11 +90,13 @@ class UserProfileView extends StatelessWidget {
                       ],
                     ),
                     textFormField(
+                      context,
                       controller: nameController,
                       labelText: 'Name',
                       readonly: controller.readonly.value,
                     ),
                     textFormField(
+                      context,
                       controller: emailController,
                       labelText: 'Email',
                       readonly: true,
@@ -104,6 +106,7 @@ class UserProfileView extends StatelessWidget {
                       children: [
                         Expanded(
                           child: textFormField(
+                            context,
                             controller: address1Controller,
                             labelText: 'Address',
                             readonly: controller.readonly.value,
@@ -113,6 +116,7 @@ class UserProfileView extends StatelessWidget {
                         ),
                         Expanded(
                           child: textFormField(
+                            context,
                             controller: cityController,
                             labelText: 'City',
                             readonly: true,
@@ -148,12 +152,14 @@ class UserProfileView extends StatelessWidget {
                       ],
                     ),
                     textFormField(
+                      context,
                       controller: phoneController,
                       labelText: 'Phone',
                       readonly: controller.readonly.value,
                       prefixIcon: const Icon(CupertinoIcons.phone_fill),
                     ),
                     textFormField(
+                      context,
                       keyboardType: TextInputType.number,
                       controller: ageController,
                       labelText: 'Age',
@@ -161,6 +167,7 @@ class UserProfileView extends StatelessWidget {
                       prefixIcon: const Icon(CupertinoIcons.person_badge_minus),
                     ),
                     textFormField(
+                      context,
                       controller: genderController,
                       labelText: 'Gender',
                       readonly: true,
@@ -200,7 +207,11 @@ class UserProfileView extends StatelessWidget {
                           controller.editDataMode();
                           controller.editButtonVisible();
                         },
-                        child: const Text('Edit Data'),
+                        child: Text(
+                          'Edit Data',
+                          style: bodyLarge(context)?.copyWith(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     Visibility(
@@ -229,10 +240,10 @@ class UserProfileView extends StatelessWidget {
                               )
                             : Text(
                                 'Save Changes',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.sp),
+                                style: bodyLarge(context)?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                       ),
                     ),
@@ -254,7 +265,8 @@ class UserProfileView extends StatelessWidget {
   }
 }
 
-TextFormField textFormField({
+TextFormField textFormField(
+  BuildContext context, {
   required TextEditingController controller,
   required String labelText,
   required bool readonly,
@@ -268,15 +280,11 @@ TextFormField textFormField({
     controller: controller,
     readOnly: readonly,
     decoration: InputDecoration(
-        hintStyle: GoogleFonts.secularOne(
-          fontSize: 16.sp,
-        ),
+        hintStyle: bodySmall(context),
         prefixIcon: prefixIcon,
         prefixIconColor: Colors.green[700],
         labelText: labelText),
-    style: GoogleFonts.secularOne(
-      fontSize: 16.sp,
-      color: myOrange,
-    ),
+    style: bodySmall(context)
+        ?.copyWith(color: myOrange, fontWeight: FontWeight.bold),
   );
 }

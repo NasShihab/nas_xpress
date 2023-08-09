@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nas_xpress/core/theme/text_theme.dart';
 import 'package:nas_xpress/screen/admin_panel/controller/admin_page_controller.dart';
 import 'package:nas_xpress/screen/dashboard/dashboard_page.dart';
 import 'package:nas_xpress/core/my_colors.dart';
@@ -32,15 +33,21 @@ class AdminPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                    onPressed: () async {
-                      Get.offAll(const DashBoard());
-                    },
-                    child: const Text('Dashboard')),
+                  onPressed: () async {
+                    Get.offAll(
+                      const DashBoard(),
+                    );
+                  },
+                  child: Text(
+                    'Dashboard',
+                    style: titleSmall(context)?.copyWith(color: Colors.white),
+                  ),
+                ),
                 Center(
                   child: Text(
                     'Add Products',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.secularOne(fontSize: 20.sp),
+                    style: titleSmall(context),
                   ),
                 ),
                 height20(),
@@ -64,6 +71,7 @@ class AdminPage extends StatelessWidget {
                           radius: 30.r,
                           child: Icon(
                             Icons.camera_alt_outlined,
+                            color: Colors.white,
                             size: 40.sp,
                           ),
                         );
@@ -129,33 +137,52 @@ class AdminPage extends StatelessWidget {
                   controller: adminController.ratingsController,
                 ),
                 height15(),
-                TextFormField(
-                  readOnly: true,
-                  controller: adminController.categoryController,
-                  decoration: InputDecoration(
-                    prefixIcon: DropdownButton<String>(
-                      items: adminController.category.map((String value) {
-                        return DropdownMenuItem(
-                          value: value,
-                          child: Text(value),
-                          onTap: () {
-                            adminController.categoryController.text = value;
-                          },
-                        );
-                      }).toList(),
-                      onChanged: (String? value) {},
-                    ),
-                    labelText: 'Category',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50.r)),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.orange,
-                        width: 2.w,
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: DropdownButton<String>(
+                        style: bodySmall(context),
+                        padding: EdgeInsets.zero,
+                        iconSize: 20.sp,
+                        items: adminController.category.map((String value) {
+                          return DropdownMenuItem(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: bodySmall(context),
+                            ),
+                            onTap: () {
+                              adminController.categoryController.text = value;
+                            },
+                          );
+                        }).toList(),
+                        onChanged: (String? value) {},
+                        alignment: AlignmentDirectional.centerEnd,
                       ),
-                      borderRadius: BorderRadius.circular(50.r),
                     ),
-                  ),
+                    Expanded(
+                      flex: 1,
+                      child: TextFormField(
+                        readOnly: true,
+                        controller: adminController.categoryController,
+                        decoration: InputDecoration(
+                          labelText: 'Category',
+                          labelStyle: bodySmall(context),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50.r)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.orange,
+                              width: 2.w,
+                            ),
+                            borderRadius: BorderRadius.circular(50.r),
+                          ),
+                        ),
+                        style: bodySmall(context),
+                      ),
+                    ),
+                  ],
                 ),
                 height15(),
                 RoundedButton(

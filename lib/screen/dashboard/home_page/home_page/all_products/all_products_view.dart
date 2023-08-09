@@ -33,7 +33,7 @@ class AllProductsView extends StatelessWidget {
                   children: List.generate(product.length, (index) {
                     return Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15.w),
-                      child: ProductCardWidget(
+                      child: Product222CardWidget(
                         id: product[index].id,
                         image: product[index].image,
                         title: product[index].title,

@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       drawer: MyNavigationDrawer(),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: Builder(
           builder: (context) {
@@ -62,7 +62,6 @@ class HomePage extends StatelessWidget {
               children: [
                 PosterView().getSliderImages(),
                 height5(),
-
                 //All Products
                 titleRow(
                   itemCategoryTitle: 'All Products',

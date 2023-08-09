@@ -2,8 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nas_xpress/model/product_model.dart';
-import '../../../../../core/height_width/height_width_custom.dart';
-import 'package:nas_xpress/screen/dashboard/home_page/products/product_card_widget/product_card_widget.dart';
+import '../product_card_widget/product_card_widget.dart';
 
 class FetchAllProducts extends StatelessWidget {
   const FetchAllProducts({super.key, required this.function});
@@ -20,17 +19,13 @@ class FetchAllProducts extends StatelessWidget {
           return const Text('Invalid');
         } else if (snapshot.hasData) {
           final product = snapshot.data!;
-          return SizedBox(
-            height: myHeight(context) * .30,
-            width: double.infinity,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              separatorBuilder: (context, index) => width10(),
-              itemCount: product.length,
-              itemBuilder: (context, index) => ClipRRect(
-                borderRadius: BorderRadius.circular(10.r),
-                child: ProductCardWidget(
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Wrap(
+              spacing: 20.w,
+              direction: Axis.horizontal,
+              children: List.generate(product.length, (index) {
+                return Product222CardWidget(
                   id: product[index].id,
                   image: product[index].image,
                   title: product[index].title,
@@ -38,8 +33,8 @@ class FetchAllProducts extends StatelessWidget {
                   price: product[index].price,
                   ratings: product[index].ratings,
                   category: product[index].category,
-                ),
-              ),
+                );
+              }),
             ),
           );
         } else {
