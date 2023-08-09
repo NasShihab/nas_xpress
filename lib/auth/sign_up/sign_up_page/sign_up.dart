@@ -4,10 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nas_xpress/auth/login/controller/login_page.dart';
+import 'package:nas_xpress/auth/login/login_page.dart';
 import 'package:nas_xpress/auth/sign_up/sign_up_page/controller/sign_up_controller.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import '../../../../core/height_width/height_width_custom.dart';
+import '../../../core/theme/text_theme.dart';
 import '../../auth_widget/auth_widget.dart';
 
 class SignupPage extends StatelessWidget {
@@ -89,20 +90,6 @@ class SignupPage extends StatelessWidget {
                     return ElevatedButton(
                       onPressed: () {
                         controller.signUp();
-                        // if (FirebaseAuth.instance.currentUser!.email != null) {
-                          // FirebaseFirestore.instance
-                          //     .collection('user_data')
-                          //     .doc(FirebaseAuth.instance.currentUser!.email)
-                          //     .set({
-                          //   "name": '',
-                          //   "age": '',
-                          //   "gender": '',
-                          //   "phone": '',
-                          //   "address1": '',
-                          //   "city": '',
-                          //   "role": 'user',
-                          // }).then((value) => Get.to(const DashBoard()));
-                        // }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: myOrange,
@@ -110,22 +97,24 @@ class SignupPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.r),
                         ),
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.all(16.h),
-                        child: controller.isLoading.value
-                            ? const Center(
-                                child: CircularProgressIndicator(
+                      child: controller.isLoading.value
+                          ? Center(
+                              child: SizedBox(
+                                height: 20.h,
+                                width: 20.w,
+                                child: const CircularProgressIndicator(
                                   color: Colors.white,
+                                  strokeWidth: 3,
                                 ),
-                              )
-                            : Text(
-                                'SignUp',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.sp),
                               ),
-                      ),
+                            )
+                          : Text(
+                              'SignUp',
+                              style: bodyMedium(context)?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                     );
                   }),
                 ],
@@ -139,7 +128,7 @@ class SignupPage extends StatelessWidget {
                   children: [
                     Text(
                       'Already have an account ?',
-                      style: GoogleFonts.secularOne(fontSize: 15.sp),
+                      style: bodySmall(context),
                     ),
                     TextButton(
                       onPressed: () {
@@ -152,10 +141,8 @@ class SignupPage extends StatelessWidget {
                       },
                       child: Text(
                         'Sign In',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.sp,
-                            color: myOrange),
+                        style: bodyMedium(context)?.copyWith(
+                            color: myOrange, fontWeight: FontWeight.bold),
                       ),
                     )
                   ],

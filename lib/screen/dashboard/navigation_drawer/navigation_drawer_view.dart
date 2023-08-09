@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile_picture_controller.dart';
 import 'package:nas_xpress/screen/dashboard/navigation_drawer/latest_collections/latest_collections_page.dart';
 import '../../admin_panel/admin_page.dart';
-import '../../../auth/login/controller/login_page.dart';
+import '../../../auth/login/login_page.dart';
 import '../user_profile/user_profile_view.dart';
 import '../../../core/routes/my_routes.dart';
 import '../../../core/my_colors.dart';

@@ -15,13 +15,13 @@ ThemeData myThemeData = ThemeData(
     displaySmall: TextStyle(
         fontSize: 30.sp, fontWeight: FontWeight.bold, color: Colors.black),
     //body
-    bodyLarge: TextStyle(fontSize: 20.sp),
-    bodyMedium: TextStyle(fontSize: 18.sp, color: Colors.grey[900]),
-    bodySmall: TextStyle(fontSize: 15.sp),
+    bodyLarge: TextStyle(fontSize: 18.sp),
+    bodyMedium: TextStyle(fontSize: 16.sp, color: Colors.grey[900]),
+    bodySmall: TextStyle(fontSize: 14.sp),
     //title
     titleLarge: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
     titleMedium: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
-    titleSmall: TextStyle(fontSize: 20.sp),
+    titleSmall: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
   ),
   listTileTheme: ListTileThemeData(
     titleTextStyle: GoogleFonts.secularOne(
@@ -34,7 +34,7 @@ ThemeData myThemeData = ThemeData(
       backgroundColor: MaterialStateProperty.all(myOrange),
       foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),
       textStyle: MaterialStateProperty.all(
-        GoogleFonts.secularOne(fontSize: 20.sp),
+        TextStyle(fontSize: 18.sp),
       ),
     ),
   ),
@@ -42,8 +42,10 @@ ThemeData myThemeData = ThemeData(
     backgroundColor: myOrange,
     foregroundColor: Colors.white,
     centerTitle: true,
-    titleTextStyle: GoogleFonts.secularOne(
-      fontSize: 25.sp,
+    titleTextStyle: TextStyle(
+      fontSize: 22.sp,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
     ),
   ),
   iconTheme: IconThemeData(

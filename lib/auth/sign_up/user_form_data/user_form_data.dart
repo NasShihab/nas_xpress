@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/sign_up/user_form_data/controller/user_data_controller.dart';
 import 'package:nas_xpress/core/my_colors.dart';
+import 'package:nas_xpress/core/theme/text_theme.dart';
 import '../../../../core/height_width/height_width_custom.dart';
 
 import '../../auth_widget/auth_widget.dart';
@@ -49,8 +50,8 @@ class UserDataForm extends StatelessWidget {
                     child: Text(
                       'Sign Up Complete! Now enter your information',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.secularOne(
-                          fontSize: 20.sp, color: Colors.white),
+                      style: titleSmall(context)?.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -71,7 +72,9 @@ class UserDataForm extends StatelessWidget {
                           },
                           child: Text(
                             'Select Picture',
-                            style: GoogleFonts.secularOne(fontSize: 16.sp),
+                            style: bodyMedium(context)?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                         width10(),
@@ -83,6 +86,7 @@ class UserDataForm extends StatelessWidget {
                               child: Icon(
                                 Icons.camera_alt_outlined,
                                 size: 40.sp,
+                                color: Colors.white,
                               ),
                             );
                           } else {
@@ -109,10 +113,12 @@ class UserDataForm extends StatelessWidget {
                     ),
                     height15(),
                     TextFormField(
+                      style: bodySmall(context),
                       readOnly: true,
                       controller: userDataController.cityNameController,
                       decoration: InputDecoration(
                         labelText: 'Select City',
+                        labelStyle: bodySmall(context),
                         prefixIcon: FittedBox(
                           fit: BoxFit.scaleDown,
                           child: PopupMenuButton<String>(
@@ -122,7 +128,10 @@ class UserDataForm extends StatelessWidget {
                                 return PopupMenuItem<String>(
                                   value: value,
                                   child: ListTile(
-                                    title: Text(value),
+                                    title: Text(
+                                      value,
+                                      style: bodySmall(context),
+                                    ),
                                     onTap: () {
                                       userDataController
                                           .cityNameController.text = value;
@@ -151,6 +160,7 @@ class UserDataForm extends StatelessWidget {
                     ),
                     height15(),
                     TextFormField(
+                      style: bodySmall(context),
                       readOnly: true,
                       controller: userDataController.genderController,
                       decoration: InputDecoration(
@@ -163,7 +173,10 @@ class UserDataForm extends StatelessWidget {
                                 return PopupMenuItem<String>(
                                   value: value,
                                   child: ListTile(
-                                    title: Text(value),
+                                    title: Text(
+                                      value,
+                                      style: bodySmall(context),
+                                    ),
                                     onTap: () {
                                       userDataController.genderController.text =
                                           value;
@@ -180,6 +193,7 @@ class UserDataForm extends StatelessWidget {
                           ),
                         ),
                         labelText: 'Gender',
+                        labelStyle: bodySmall(context),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(50.r)),
                         focusedBorder: OutlineInputBorder(
@@ -246,22 +260,24 @@ class UserDataForm extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10.r),
                           ),
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.h),
-                          child: userDataController.isLoading.value
-                              ? const Center(
-                                  child: CircularProgressIndicator(
+                        child: userDataController.isLoading.value
+                            ? Center(
+                                child: SizedBox(
+                                  height: 20.h,
+                                  width: 20.w,
+                                  child: const CircularProgressIndicator(
                                     color: Colors.white,
+                                    strokeWidth: 3,
                                   ),
-                                )
-                              : Text(
-                                  'Continue',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.sp),
                                 ),
-                        ),
+                              )
+                            : Text(
+                                'Continue',
+                                style: bodyMedium(context)?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                       );
                     }),
                   ],
