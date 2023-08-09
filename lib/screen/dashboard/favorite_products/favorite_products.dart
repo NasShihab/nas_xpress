@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:nas_xpress/core/my_colors.dart';
+import 'package:nas_xpress/core/theme/text_theme.dart';
 import 'controller/favorite_product_controller.dart';
 
 class FavoriteProduct extends StatelessWidget {
@@ -36,23 +38,28 @@ class FavoriteProduct extends StatelessWidget {
                       DocumentSnapshot favorites = snapshot.data!.docs[index];
                       return ListTile(
                         isThreeLine: true,
-                        title: Text(favorites["title"]),
+                        title: Text(
+                          favorites["title"],
+                          style: bodySmall(context)
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
                         leading: Image.network(
                           favorites["image"],
                           width: 50.w,
                           height: double.infinity,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.scaleDown,
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               favorites["description"],
-                              style: GoogleFonts.secularOne(fontSize: 15.sp),
+                              style: bodySmall(context),
                             ),
                             Text(
                               favorites["id"],
-                              style: TextStyle(fontSize: 15.sp),
+                              style:
+                                  bodySmall(context)?.copyWith(fontSize: 12.sp),
                             ),
                           ],
                         ),
@@ -65,7 +72,10 @@ class FavoriteProduct extends StatelessWidget {
                                 .doc(favorites["id"])
                                 .delete();
                           },
-                          icon: const Icon(Icons.favorite, color: Colors.green),
+                          icon: Icon(
+                            CupertinoIcons.heart_fill,
+                            color: myOrange,
+                          ),
                         ),
                       );
                     }),
