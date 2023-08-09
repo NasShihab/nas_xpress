@@ -7,7 +7,7 @@ import 'package:nas_xpress/screen/dashboard/user_profile/user_profile_view.dart'
 import 'package:nas_xpress/screen/dashboard/cart/cart_page.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import '../favorite_products/favorite_products.dart';
-import '../home_page/home_page_view/home_page.dart';
+import '../home_page/home_page/home_page.dart';
 import 'controller/bottom_navigation_controller.dart';
 
 class BottomNavigationBarPage extends StatelessWidget {

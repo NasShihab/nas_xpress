@@ -9,8 +9,8 @@ import 'package:nas_xpress/auth/sign_up/user_form_data/controller/user_data_cont
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/read_user_controller.dart';
 import 'package:nas_xpress/screen/dashboard/user_profile/controller/user_profile_picture_controller.dart';
 import 'package:nas_xpress/core/my_colors.dart';
+import '../../../../core/height_width/height_width_custom.dart';
 
-import '../../../core/widget_reusable.dart';
 
 class UserProfileView extends StatelessWidget {
   const UserProfileView({super.key});

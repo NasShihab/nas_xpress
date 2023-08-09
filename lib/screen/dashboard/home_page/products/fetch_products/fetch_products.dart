@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nas_xpress/model/product_model.dart';
-import 'package:nas_xpress/core/widget_reusable.dart';
+import '../../../../../core/height_width/height_width_custom.dart';
 import 'package:nas_xpress/screen/dashboard/home_page/products/product_card_widget/product_card_widget.dart';
 
-class AllProducts extends StatelessWidget {
-  const AllProducts({super.key, required this.function});
+class FetchAllProducts extends StatelessWidget {
+  const FetchAllProducts({super.key, required this.function});
 
   final Stream<List<Product>> function;
 
@@ -21,7 +21,7 @@ class AllProducts extends StatelessWidget {
         } else if (snapshot.hasData) {
           final product = snapshot.data!;
           return SizedBox(
-            height: 180.h,
+            height: myHeight(context) * .30,
             width: double.infinity,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
@@ -29,7 +29,7 @@ class AllProducts extends StatelessWidget {
               separatorBuilder: (context, index) => width10(),
               itemCount: product.length,
               itemBuilder: (context, index) => ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(10.r),
                 child: ProductCardWidget(
                   id: product[index].id,
                   image: product[index].image,

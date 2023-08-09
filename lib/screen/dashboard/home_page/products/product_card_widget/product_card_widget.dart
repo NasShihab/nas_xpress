@@ -2,11 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+import 'package:nas_xpress/core/height_width/height_width_custom.dart';
+import 'package:nas_xpress/core/theme/text_theme.dart';
 import '../../../../../core/my_colors.dart';
 import '../../../../../core/widget_reusable.dart';
 import '../../../../admin_panel/controller/admin_page_controller.dart';
@@ -38,78 +37,83 @@ class ProductCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10.r),
+      borderRadius: BorderRadius.circular(5.r),
       child: Material(
         child: InkWell(
           splashColor: myOrange,
           onTap: () {
-            Get.to(ProductViewPanel(image));
+            Get.to(
+              ProductViewPanel(image),
+            );
           },
           child: Stack(
             fit: StackFit.passthrough,
             children: [
               Ink(
+                width: myWidth(context) * .35,
+                height: myHeight(context) * .30,
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                      // Color(0xFFe9edc9),
-                      // Color(0xFF48cae4),
-                      Colors.white,
-                      Colors.white,
-                    ],
-                  ),
-                  border: Border.all(color: myOrange),
+                  color: Theme.of(context).primaryColor,
+                  border: Border.all(color: myOrange, width: 2.w),
                   borderRadius: BorderRadius.circular(10.r),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(1),
-                      offset: const Offset(0, 5),
                       blurRadius: 5.r,
                     ),
                   ],
                 ),
-                child: Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+                  width: myWidth(context) * .35,
+                  height: myHeight(context) * .30,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
-                        image,
-                        fit: BoxFit.cover,
-                        height: 100.h,
-                        width: 100.h,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5.r),
+                        child: Image.network(
+                          image,
+                          fit: BoxFit.cover,
+                          height: 100.h,
+                          width: myWidth(context) * .35,
+                        ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10.w),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      const Spacer(),
+                      Text(
+                        title,
+                        style: bodySmall(context)
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const Spacer(),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          '${price.toString()} ৳',
+                          style: bodySmall(context),
+                        ),
+                      ),
+                      const Spacer(),
+                      SizedBox(
+                        width: myWidth(context) * .35,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+                            Icon(
+                              Icons.star,
+                              color: myOrange,
+                              size: 16.sp,
+                            ),
                             Text(
-                              title,
-                              style: GoogleFonts.secularOne(fontSize: 14.sp),
+                              '($ratings)',
+                              style:
+                                  bodySmall(context)?.copyWith(fontSize: 12.sp),
                             ),
-                            FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                '${price.toString()} ৳',
-                                style: GoogleFonts.secularOne(fontSize: 14.sp),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: ratingsBarWidget(
-                                        ratingsProducts: ratings)),
-                              ],
-                            )
                           ],
                         ),
                       ),
+                      const Spacer(),
                     ],
                   ),
                 ),
@@ -163,7 +167,7 @@ class ProductCardWidget extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 25.h,
+                bottom: 5.h,
                 right: .1.w,
                 child: IconButton(
                   isSelected: false,
@@ -287,30 +291,4 @@ class ProductCardWidget extends StatelessWidget {
       ],
     );
   }
-
-  Widget ratingsBarWidget({required double ratingsProducts}) => Center(
-        child: RatingBar(
-          itemPadding: EdgeInsets.zero,
-          itemSize: 18.sp,
-          initialRating: ratingsProducts,
-          ratingWidget: RatingWidget(
-            full: const Icon(
-              Icons.star,
-              color: Colors.yellow,
-            ),
-            half: const Icon(
-              Icons.star,
-              color: Colors.black,
-            ),
-            empty: const Icon(
-              Icons.star,
-              color: Colors.black,
-            ),
-          ),
-          onRatingUpdate: (ratings) {
-            ratings = ratings;
-            //need setState
-          },
-        ),
-      );
 }

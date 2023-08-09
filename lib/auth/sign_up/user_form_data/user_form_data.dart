@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/auth/sign_up/user_form_data/controller/user_data_controller.dart';
 import 'package:nas_xpress/core/my_colors.dart';
-import 'package:nas_xpress/core/widget_reusable.dart';
+import '../../../../core/height_width/height_width_custom.dart';
 
 import '../../auth_widget/auth_widget.dart';
 

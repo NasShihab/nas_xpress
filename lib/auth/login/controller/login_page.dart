@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/core/my_colors.dart';
-import '../../../core/widget_reusable.dart';
+import '../../../../core/height_width/height_width_custom.dart';
 import '../../auth_widget/auth_widget.dart';
 import '../../sign_up/sign_up_page/sign_up.dart';
 import '../login_controller.dart';

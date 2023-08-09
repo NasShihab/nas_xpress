@@ -4,6 +4,25 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 
 ThemeData myThemeData = ThemeData(
+  useMaterial3: true,
+  primaryColor: Colors.white,
+  textTheme: TextTheme(
+    //display
+    displayLarge: TextStyle(
+        fontSize: 50.sp, fontWeight: FontWeight.bold, color: Colors.black),
+    displayMedium: TextStyle(
+        fontSize: 40.sp, fontWeight: FontWeight.bold, color: Colors.black),
+    displaySmall: TextStyle(
+        fontSize: 30.sp, fontWeight: FontWeight.bold, color: Colors.black),
+    //body
+    bodyLarge: TextStyle(fontSize: 20.sp),
+    bodyMedium: TextStyle(fontSize: 18.sp, color: Colors.grey[900]),
+    bodySmall: TextStyle(fontSize: 15.sp),
+    //title
+    titleLarge: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+    titleMedium: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
+    titleSmall: TextStyle(fontSize: 20.sp),
+  ),
   listTileTheme: ListTileThemeData(
     titleTextStyle: GoogleFonts.secularOne(
       color: Colors.deepPurple,
@@ -30,12 +49,5 @@ ThemeData myThemeData = ThemeData(
   iconTheme: IconThemeData(
     color: myOrange,
     size: 22.sp,
-  ),
-  textTheme: TextTheme(
-    bodyMedium: TextStyle(
-      fontSize: 20.sp,
-      fontWeight: FontWeight.normal,
-      color: Colors.black,
-    ),
   ),
 );

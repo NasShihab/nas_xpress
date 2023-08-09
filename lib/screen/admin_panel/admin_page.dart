@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nas_xpress/screen/admin_panel/controller/admin_page_controller.dart';
 import 'package:nas_xpress/screen/dashboard/dashboard_page.dart';
 import 'package:nas_xpress/core/my_colors.dart';
-import 'package:nas_xpress/core/widget_reusable.dart';
+import '../../../../core/height_width/height_width_custom.dart';
 import '../../auth/auth_widget/auth_widget.dart';
 
 class AdminPage extends StatelessWidget {

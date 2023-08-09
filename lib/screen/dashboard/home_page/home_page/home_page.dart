@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nas_xpress/screen/dashboard/home_page/home_page/all_products/all_products_view.dart';
 import 'package:nas_xpress/screen/dashboard/home_page/poster_view/poster_view.dart';
 import 'package:nas_xpress/core/my_colors.dart';
 import 'package:nas_xpress/core/widget_reusable.dart';
 import '../../cart/cart_page.dart';
 import '../../navigation_drawer/navigation_drawer_view.dart';
 import '../products/controller/get_product_controller.dart';
-import '../all_products_view/all_products.dart';
+import '../products/fetch_products/fetch_products.dart';
+import '../../../../core/height_width/height_width_custom.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -64,32 +66,27 @@ class HomePage extends StatelessWidget {
                 //All Products
                 titleRow(
                   itemCategoryTitle: 'All Products',
-                  pageName: AllProducts(
-                    function: controller.readAllProduct(),
-                  ),
+                  pageName:const AllProductsView(),
                 ),
-                AllProducts(
+                FetchAllProducts(
                   function: controller.readAllProduct(),
                 ),
 
                 // Female Collections
                 titleRow(
                   itemCategoryTitle: 'Female Collections',
-                  pageName: AllProducts(
-                    function: controller.femaleCollectionsProduct(),
-                  ),
+                  pageName: Container(),
                 ),
-                AllProducts(
+                FetchAllProducts(
                   function: controller.femaleCollectionsProduct(),
                 ),
 
                 // Male Collections
                 titleRow(
                   itemCategoryTitle: 'Male Collections',
-                  pageName: AllProducts(
-                      function: controller.maleCollectionsProduct()),
+                  pageName: Container(),
                 ),
-                AllProducts(
+                FetchAllProducts(
                   function: controller.maleCollectionsProduct(),
                 ),
               ],
